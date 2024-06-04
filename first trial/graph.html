@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blood Pressure and Blood Sugar Level Graph</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Blood Pressure and Blood Sugar Level Graph</h1>
+  <canvas id="bloodPressureGraph" width="400" height="200"></canvas>
+  <canvas id="bloodSugarGraph" width="400" height="200"></canvas>
+
+  <script>
+    // Blood Pressure Data
+    const bloodPressureData = {
+      labels: ["Morning", "Afternoon", "Evening"],
+      datasets: [{
+        label: "Systolic Blood Pressure",
+        data: [120, 125, 130],
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderColor: "rgba(255, 99, 132, 1)",
+        borderWidth: 1
+      }, {
+        label: "Diastolic Blood Pressure",
+        data: [80, 85, 90],
+        backgroundColor: "rgba(54, 162, 235, 0.2)",
+        borderColor: "rgba(54, 162, 235, 1)",
+        borderWidth: 1
+      }]
+    };
+
+    // Blood Sugar Level Data
+    const bloodSugarData = {
+      labels: ["Fasting", "After Breakfast", "After Lunch", "After Dinner"],
+      datasets: [{
+        label: "Blood Sugar Level",
+        data: [100, 120, 140, 160],
+        backgroundColor: "rgba(255, 206, 86, 0.2)",
+        borderColor: "rgba(255, 206, 86, 1)",
+        borderWidth: 1
+      }]
+    };
+
+    // Draw Blood Pressure Graph
+    const bloodPressureCtx = document.getElementById("bloodPressureGraph").getContext("2d");
+    new Chart(bloodPressureCtx, {
+      type: "line",
+      data: bloodPressureData,
+      options: {
+        title: {
+          display: true,
+          text: "Blood Pressure"
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Draw Blood Sugar Level Graph
+    const bloodSugarCtx = document.getElementById("bloodSugarGraph").getContext("2d");
+    new Chart(bloodSugarCtx, {
+      type: "line",
+      data: bloodSugarData,
+      options: {
+        title: {
+          display: true,
+          text: "Blood Sugar Level"
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
